@@ -1,217 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#082F53">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0E284D">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Car Upgrade">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>Car Upgrade Calculator</title>
 <style>
 :root{
-  --navy:#082F53;
+  --theme:#0E284D;
   --bg:#F5F5F7;
   --card:#FFFFFF;
   --text:#111111;
-  --muted:#6B6B6B;
-  --border:#DDDDE1;
-  --soft:#F7F7F8;
-  --soft2:#F0F2F5;
-  --danger:#A12B2B;
-  --success:#176B4B;
-  --shadow:0 6px 20px rgba(0,0,0,.055);
+  --muted:#6F6F73;
+  --line:#D7D7DA;
+  --selected:#E2E2E4;
+  --calc:#F4F4F5;
+  --shadow:0 10px 28px rgba(0,0,0,.05);
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-body{padding:0 0 calc(22px + env(safe-area-inset-bottom))}
-button,input{font:inherit}
-.wrap{width:min(520px,100%);margin:0 auto;padding:18px 16px 30px}
-.header{text-align:center;padding:2px 0 14px}
-.app-logo{width:46px;height:46px;display:block;margin:0 auto 7px}
-h1{font-size:24px;line-height:1.18;margin:0;font-weight:700;letter-spacing:-.25px}
-.card{background:var(--card);border-radius:16px;padding:15px;box-shadow:var(--shadow);margin-bottom:11px}
-.card-title{font-size:16px;font-weight:700;margin:0 0 12px}
-.field{margin-bottom:12px}.field:last-child{margin-bottom:0}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-label{display:block;font-size:13px;font-weight:700;margin:0 0 6px;line-height:1.25}
-.optional{color:var(--muted);font-weight:400}
-input{width:100%;height:48px;border:1px solid var(--border);border-radius:12px;background:#fff;color:var(--text);padding:0 12px;font-size:16px;outline:none}
-input:focus,button:focus-visible{border-color:var(--navy);box-shadow:0 0 0 3px rgba(8,47,83,.10)}
-input.readonly{background:var(--soft);color:#333}
-.money{position:relative}.money:before{content:'$';position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--muted);z-index:1}.money input{padding-left:29px}
-.summary-line{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--soft2);border-radius:12px;padding:11px 12px;margin-top:2px}
-.summary-line span{font-size:12px;color:var(--muted);font-weight:700}.summary-line strong{font-size:19px}.summary-line.negative strong{color:var(--danger)}
-.finance-row{margin-bottom:12px}.finance-row:last-child{margin-bottom:0}
-.finance-label{font-size:13px;font-weight:700;margin-bottom:6px}
-.seg4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.seg4 button{height:42px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--text);font-size:12.5px;font-weight:700;padding:0 4px}
-.seg4 button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-.custom-row{margin-top:8px}
-.helper{font-size:11px;color:var(--muted);margin:5px 1px 0;line-height:1.35}
-.result-card{border:1px solid #E5E5E8}
-.result-title{color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px}
-.hero-result{padding:1px 0 11px;border-bottom:1px solid #ECECEE}
-.hero-result .label{font-size:12px;color:var(--muted);font-weight:700}
-.hero-result .amount{font-size:32px;font-weight:800;line-height:1.08;margin-top:3px;color:var(--navy)}
-.results{margin-top:3px}.result-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:9px 0;border-bottom:1px solid #EFEFF1}.result-row:last-child{border-bottom:0}
-.result-row .label{font-size:12px;color:var(--muted);font-weight:700}.result-row .value{font-size:16px;font-weight:700;text-align:right}.value.negative{color:var(--danger)}.value.positive{color:var(--success)}
-.actions{display:grid;grid-template-columns:2fr 1fr;gap:9px;margin:3px 0 0}.action{height:50px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}.action.primary{border:1px solid var(--navy);background:var(--navy);color:#fff}.action.secondary{border:1px solid var(--border);background:#fff;color:var(--text)}
-.footer{text-align:center;color:var(--muted);font-size:12px;padding:17px 0 0}.hidden{display:none!important}.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,18px);opacity:0;background:#111;color:#fff;padding:10px 14px;border-radius:999px;font-size:12px;pointer-events:none;transition:.2s;z-index:20}.toast.show{opacity:1;transform:translate(-50%,0)}
+body{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+button,input{font:inherit;color:inherit}
+.app{width:min(520px,100%);margin:0 auto;padding:24px 18px 28px}
+.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:24px;margin:3px 2px 22px}
+.topbar h1{font-size:27px;line-height:1.08;letter-spacing:-.6px;margin:0;font-weight:800;white-space:nowrap}
+.top-action{appearance:none;border:0;background:transparent;padding:6px 0;color:#5D5D60;font-size:18px;font-weight:700;cursor:pointer}
+.top-action:active{opacity:.55}
+.card{background:var(--card);border-radius:28px;padding:24px 23px 26px;box-shadow:var(--shadow)}
+.section-title{font-size:15px;font-weight:800;margin:0 0 14px}
+.section{margin-bottom:24px}.section:last-child{margin-bottom:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:17px}.field:last-child{margin-bottom:0}
+label{display:block;font-size:14px;font-weight:800;margin:0 0 8px;line-height:1.2}
+.optional{font-weight:400;color:var(--muted)}
+.money{position:relative}.money::before{content:'$';position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:19px;color:#77777A;pointer-events:none}
+input.money-input{padding-left:35px}
+input[type="text"],input[type="number"]{width:100%;height:62px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:0 15px;font-size:17px;outline:none}
+input:focus{border-color:#AFAFB3;box-shadow:0 0 0 2px rgba(0,0,0,.04)}
+input.calc{background:var(--calc);font-size:22px;font-weight:800}
+.equity-strip{display:flex;justify-content:space-between;gap:15px;align-items:center;background:var(--calc);border:1px solid #E7E7E9;border-radius:18px;padding:16px 17px;margin-top:4px}
+.equity-strip span{font-size:13px;color:var(--muted);font-weight:700}.equity-strip strong{font-size:20px}
+.rule{height:1px;background:#EEEEF0;margin:23px 0}
+.seg-label{font-size:14px;font-weight:800;margin:0 0 9px}
+.segment{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:17px}
+.segment button,.segment input{height:56px;border:1px solid var(--line);border-radius:18px;background:#fff;font-size:16px;font-weight:800;text-align:center;padding:0 6px}
+.segment button{cursor:pointer}.segment button.active{background:var(--selected);border-color:#C6C6C9}.segment input.custom-active{background:var(--selected);border-color:#C6C6C9}
+.segment input::placeholder{color:transparent}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.result-tile{min-height:112px;border:1px solid var(--line);border-radius:20px;background:#F8F8F8;padding:16px 17px;display:flex;flex-direction:column;justify-content:space-between}
+.result-tile .name{font-size:13px;font-weight:800;line-height:1.25}.result-tile .value{font-size:31px;font-weight:800;line-height:1}
+.support{margin-top:14px;border-top:1px solid #ECECEE;padding-top:3px}
+.support-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 1px 8px;font-size:13px}.support-row span:first-child{color:var(--muted);font-weight:700}.support-row strong{font-size:16px}
+.hidden{display:none!important}
+.footer{text-align:center;color:#77777A;font-size:13px;padding:19px 0 0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,15px);opacity:0;background:#111;color:#fff;padding:10px 14px;border-radius:999px;font-size:12px;transition:.2s;pointer-events:none;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
 canvas{display:none}
-@media(max-width:340px){.wrap{padding-left:12px;padding-right:12px}.grid2{grid-template-columns:1fr}.seg4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){
+  .app{padding-left:14px;padding-right:14px}
+  .topbar{gap:16px;margin-left:3px;margin-right:3px}
+  .topbar h1{font-size:24px}.top-action{font-size:16px}
+  .card{padding:21px 16px 23px;border-radius:24px}
+  input[type="text"],input[type="number"]{height:58px}
+  .segment button,.segment input{height:52px;font-size:14px;border-radius:16px}
+}
+@media(max-width:355px){.topbar{gap:11px}.topbar h1{font-size:21px}.top-action{font-size:15px}.grid2{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<main class="wrap">
-<header class="header">
-  <svg class="app-logo" viewBox="0 0 512 512" role="img" aria-label="Car Upgrade logo">
-    <g fill="none" stroke="#082F53" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M92 300h328l-33-78c-8-19-27-32-48-32H174c-21 0-40 13-48 32l-34 78z"/>
-      <path d="M72 300v56c0 18 14 32 32 32h304c18 0 32-14 32-32v-56"/>
-      <circle cx="145" cy="356" r="28"/><circle cx="367" cy="356" r="28"/>
-      <path d="M291 134h101M353 95l39 39-39 39"/>
-    </g>
-  </svg>
-  <h1>Car Upgrade Calculator</h1>
-</header>
+<main class="app">
+  <header class="topbar">
+    <h1>Car Upgrade Calculator</h1>
+    <button class="top-action" id="shareBtn" type="button">Share</button>
+    <button class="top-action" id="clearBtn" type="button">Clear</button>
+  </header>
 
-<section class="card">
-  <h2 class="card-title">Current Car</h2>
-  <div class="grid2">
-    <div class="field"><label for="tradeIn">Trade-in Value</label><div class="money"><input id="tradeIn" inputmode="numeric" placeholder="0"></div></div>
-    <div class="field"><label for="settlement">Outstanding Settlement</label><div class="money"><input id="settlement" inputmode="numeric" placeholder="0"></div></div>
-  </div>
-  <div class="field"><label for="currentInstalment">Current Instalment <span class="optional">(optional)</span></label><div class="money"><input id="currentInstalment" inputmode="numeric" placeholder="0"></div></div>
-  <div id="equityLine" class="summary-line"><span id="equityLineLabel">Net Trade-in Equity</span><strong id="equityValue">$0</strong></div>
-</section>
+  <section class="card">
+    <div class="section">
+      <h2 class="section-title">Current car</h2>
+      <div class="grid2">
+        <div class="field"><label for="tradeIn">Trade-in value</label><div class="money"><input class="money-input" id="tradeIn" inputmode="numeric" type="text" placeholder=""></div></div>
+        <div class="field"><label for="settlement">Outstanding settlement</label><div class="money"><input class="money-input" id="settlement" inputmode="numeric" type="text" placeholder=""></div></div>
+      </div>
+      <div class="field"><label for="currentInstalment">Current instalment <span class="optional">(optional)</span></label><div class="money"><input class="money-input" id="currentInstalment" inputmode="numeric" type="text" placeholder=""></div></div>
+      <div class="equity-strip"><span id="equityLabel">Net trade-in equity</span><strong id="equityValue">$0</strong></div>
+    </div>
 
-<section class="card">
-  <h2 class="card-title">New Car</h2>
-  <div class="grid2">
-    <div class="field"><label for="carPrice">Car Price</label><div class="money"><input id="carPrice" inputmode="numeric" placeholder="0"></div></div>
-    <div class="field"><label for="promo">Promo Discount</label><div class="money"><input id="promo" inputmode="numeric" placeholder="0"></div></div>
-  </div>
-  <div class="grid2">
-    <div class="field"><label for="effectivePrice">Effective Price</label><div class="money"><input id="effectivePrice" class="readonly" readonly value="0"></div></div>
-    <div class="field"><label for="loanAmount">Loan Amount</label><div class="money"><input id="loanAmount" inputmode="numeric" placeholder="0"></div><div class="helper">Auto-calculated from Loan %. Edit to use a custom amount.</div></div>
-  </div>
-</section>
+    <div class="rule"></div>
 
-<section class="card">
-  <h2 class="card-title">Financing</h2>
-  <div class="finance-row">
-    <div class="finance-label">Loan</div>
-    <div class="seg4" id="loanSeg"><button data-v="50">50%</button><button data-v="60" class="active">60%</button><button data-v="90">90%</button><button data-v="custom">Custom</button></div>
-    <div class="custom-row hidden" id="customPctRow"><input id="customPct" type="number" inputmode="decimal" min="0" max="100" step="0.1" placeholder="Custom loan %"></div>
-  </div>
-  <div class="finance-row">
-    <div class="finance-label">Interest</div>
-    <div class="seg4" id="interestSeg"><button data-v="2.28">2.28%</button><button data-v="2.6" class="active">2.6%</button><button data-v="2.98">2.98%</button><button data-v="custom">Custom</button></div>
-    <div class="custom-row hidden" id="customInterestRow"><input id="customInterest" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Custom interest %"></div>
-  </div>
-  <div class="finance-row">
-    <div class="finance-label">Tenure</div>
-    <div class="seg4" id="tenureSeg"><button data-v="5">5 yr</button><button data-v="7" class="active">7 yr</button><button data-v="10">10 yr</button><button data-v="custom">Custom</button></div>
-    <div class="custom-row hidden" id="customTenureRow"><input id="customTenure" type="number" inputmode="numeric" min="1" max="15" step="1" placeholder="Custom years"></div>
-  </div>
-</section>
+    <div class="section">
+      <h2 class="section-title">New car</h2>
+      <div class="grid2">
+        <div class="field"><label for="carPrice">Car price</label><div class="money"><input class="money-input" id="carPrice" inputmode="numeric" type="text" placeholder=""></div></div>
+        <div class="field"><label for="promo">Promo</label><div class="money"><input class="money-input" id="promo" inputmode="numeric" type="text" value="0"></div></div>
+      </div>
+      <div class="field"><label for="effectivePrice">Effective price</label><div class="money"><input class="money-input calc" id="effectivePrice" type="text" value="0" readonly></div></div>
 
-<section class="card result-card">
-  <div class="result-title">Upgrade Summary</div>
-  <div class="hero-result"><div class="label" id="cashLabel">Cash Required to Upgrade</div><div class="amount" id="cashRequired">$0</div></div>
-  <div class="results">
-    <div class="result-row"><div class="label">New Monthly Instalment</div><div class="value" id="newInstalment">$0</div></div>
-    <div class="result-row hidden" id="monthlyDiffRow"><div class="label">Monthly Difference</div><div class="value" id="monthlyDiff">$0</div></div>
-    <div class="result-row"><div class="label" id="equityResultLabel">Net Trade-in Equity</div><div class="value" id="equityResult">$0</div></div>
-    <div class="result-row"><div class="label">Down Payment</div><div class="value" id="downPaymentResult">$0</div></div>
-  </div>
-</section>
+      <div class="seg-label">Loan percentage</div>
+      <div class="segment" id="loanSegment">
+        <button type="button" data-v="50">50%</button><button type="button" data-v="60" class="active">60%</button><button type="button" data-v="90">90%</button><input id="customPct" type="number" inputmode="decimal" min="0" max="100" step="0.1" aria-label="Custom loan percentage">
+      </div>
 
-<div class="actions"><button class="action primary" id="shareBtn" type="button">Share Image</button><button class="action secondary" id="clearBtn" type="button">Clear</button></div>
-<footer class="footer">Bernice Chua | @bernice.mercedes</footer>
+      <div class="field"><label for="loanAmount">Loan amount</label><div class="money"><input class="money-input calc" id="loanAmount" inputmode="numeric" type="text" value="0"></div></div>
+
+      <div class="seg-label">Interest rate</div>
+      <div class="segment" id="interestSegment">
+        <button type="button" data-v="2.28">2.28%</button><button type="button" data-v="2.6" class="active">2.60%</button><button type="button" data-v="2.98">2.98%</button><input id="customInterest" type="number" inputmode="decimal" min="0" step="0.01" aria-label="Custom interest rate">
+      </div>
+
+      <div class="seg-label">Loan tenure</div>
+      <div class="segment" id="tenureSegment">
+        <button type="button" data-v="5">5 yr</button><button type="button" data-v="7" class="active">7 yr</button><button type="button" data-v="10">10 yr</button><input id="customTenure" type="number" inputmode="numeric" min="1" max="15" step="1" aria-label="Custom loan tenure">
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <div class="results-grid">
+        <div class="result-tile"><div class="name" id="cashLabel">Cash required to upgrade</div><div class="value" id="cashValue">$0</div></div>
+        <div class="result-tile"><div class="name">Monthly instalment</div><div class="value" id="monthlyValue">$0</div></div>
+      </div>
+      <div class="support">
+        <div class="support-row"><span id="equityResultLabel">Net trade-in equity</span><strong id="equityResult">$0</strong></div>
+        <div class="support-row hidden" id="monthlyDiffRow"><span>Monthly difference</span><strong id="monthlyDiff">$0</strong></div>
+        <div class="support-row"><span>Down payment</span><strong id="downPayment">$0</strong></div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">Bernice Chua | @bernice.mercedes</footer>
 </main>
-<canvas id="shareCanvas" width="1080" height="1350"></canvas><div id="toast" class="toast"></div>
+<canvas id="shareCanvas" width="1080" height="1350"></canvas><div class="toast" id="toast"></div>
 <script>
 (()=>{
-const $=id=>document.getElementById(id);
-const KEY='bernice_car_upgrade_family_v3';
-let state={loanMode:'60',interestMode:'2.6',tenureMode:'7',manualLoan:false};
+const $=id=>document.getElementById(id), KEY='bernice_car_upgrade_family_v4';
+let state={loan:'60',interest:'2.6',tenure:'7',manualLoan:false};
 const raw=v=>{const n=Number(String(v??'').replace(/[^0-9.-]/g,''));return Number.isFinite(n)?n:0};
-const fmt=n=>'$'+Math.round(Math.abs(Number(n)||0)).toLocaleString('en-SG');
-const signed=n=>{n=Math.round(Number(n)||0);return n>0?'+'+fmt(n):n<0?'-'+fmt(n):'$0'};
-const inputFmt=n=>Math.max(0,Math.round(Number(n)||0)).toLocaleString('en-SG');
-const moneyInputIds=['tradeIn','settlement','currentInstalment','carPrice','promo','loanAmount'];
-let suppressLoanInput=false;
-function bindMoney(el){
-  el.addEventListener('focus',()=>{const n=raw(el.value);el.value=n?String(Math.round(n)):''});
-  el.addEventListener('blur',()=>{const n=raw(el.value);el.value=n?inputFmt(n):'';recalc()});
-  el.addEventListener('input',()=>{if(el.id==='loanAmount'&&!suppressLoanInput)state.manualLoan=true;recalc()});
-}
-moneyInputIds.forEach(id=>bindMoney($(id)));
-function setMode(group,mode){
-  state[group+'Mode']=mode;
-  if(group==='loan') state.manualLoan=false;
-  syncModes();recalc();
-}
-[['loanSeg','loan'],['interestSeg','interest'],['tenureSeg','tenure']].forEach(([id,group])=>{
-  $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setMode(group,b.dataset.v)));
+const money=n=>'$'+Math.round(Math.abs(Number(n)||0)).toLocaleString('en-SG');
+const signed=n=>{n=Math.round(Number(n)||0);return n>0?'+'+money(n):n<0?'-'+money(n):'$0'};
+const plain=n=>Math.max(0,Math.round(Number(n)||0)).toLocaleString('en-SG');
+let settingLoan=false;
+['tradeIn','settlement','currentInstalment','carPrice','promo','loanAmount'].forEach(id=>{
+ const el=$(id); el.addEventListener('focus',()=>{const n=raw(el.value);el.value=n?String(Math.round(n)):''});
+ el.addEventListener('blur',()=>{const n=raw(el.value);el.value=(n||id==='promo')?plain(n):'';calc()});
+ el.addEventListener('input',()=>{if(id==='loanAmount'&&!settingLoan)state.manualLoan=true;calc()});
 });
-['customPct','customInterest','customTenure'].forEach(id=>$(id).addEventListener('input',recalc));
-function syncModes(){
-  [['loanSeg','loan'],['interestSeg','interest'],['tenureSeg','tenure']].forEach(([id,group])=>{
-    $(id).querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.v===state[group+'Mode']));
-  });
-  $('customPctRow').classList.toggle('hidden',state.loanMode!=='custom');
-  $('customInterestRow').classList.toggle('hidden',state.interestMode!=='custom');
-  $('customTenureRow').classList.toggle('hidden',state.tenureMode!=='custom');
+function setPreset(kind,val){state[kind]=val;if(kind==='loan'){state.manualLoan=false;$('customPct').value=''};if(kind==='interest')$('customInterest').value='';if(kind==='tenure')$('customTenure').value='';sync();calc()}
+[['loanSegment','loan'],['interestSegment','interest'],['tenureSegment','tenure']].forEach(([seg,kind])=>$(seg).querySelectorAll('button').forEach(b=>b.onclick=()=>setPreset(kind,b.dataset.v)));
+$('customPct').addEventListener('input',()=>{if($('customPct').value!==''){state.loan='custom';state.manualLoan=false}sync();calc()});
+$('customInterest').addEventListener('input',()=>{if($('customInterest').value!=='')state.interest='custom';sync();calc()});
+$('customTenure').addEventListener('input',()=>{if($('customTenure').value!=='')state.tenure='custom';sync();calc()});
+function sync(){
+ [['loanSegment','loan','customPct'],['interestSegment','interest','customInterest'],['tenureSegment','tenure','customTenure']].forEach(([seg,kind,custom])=>{
+  $(seg).querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.v===state[kind]));
+  $(custom).classList.toggle('custom-active',state[kind]==='custom');
+ });
 }
-function vals(){
-  const trade=raw($('tradeIn').value),settle=raw($('settlement').value),current=raw($('currentInstalment').value),price=raw($('carPrice').value),promo=raw($('promo').value);
-  const effective=Math.max(0,price-promo);
-  const pct=state.loanMode==='custom'?Math.max(0,Math.min(100,raw($('customPct').value))):Number(state.loanMode);
-  const rate=state.interestMode==='custom'?Math.max(0,raw($('customInterest').value)):Number(state.interestMode);
-  const yrs=state.tenureMode==='custom'?Math.max(1,raw($('customTenure').value)||1):Number(state.tenureMode);
-  let loan=state.manualLoan?raw($('loanAmount').value):Math.floor(effective*pct/100);
-  loan=Math.max(0,Math.min(effective,loan));
-  const down=Math.max(0,effective-loan),equity=trade-settle,cash=Math.max(0,down-equity),surplus=Math.max(0,equity-down);
-  const totalInterest=loan*(rate/100)*yrs;
-  const instal=loan>0?Math.ceil((loan+totalInterest)/(yrs*12)):0;
-  const diff=current>0?instal-current:null;
-  return{trade,settle,current,price,promo,effective,pct,rate,yrs,loan,down,equity,cash,surplus,instal,diff};
+function values(){
+ const trade=raw($('tradeIn').value),settle=raw($('settlement').value),current=raw($('currentInstalment').value),price=raw($('carPrice').value),promo=raw($('promo').value),effective=Math.max(0,price-promo);
+ const pct=state.loan==='custom'?Math.max(0,Math.min(100,raw($('customPct').value))):Number(state.loan);
+ const rate=state.interest==='custom'?Math.max(0,raw($('customInterest').value)):Number(state.interest);
+ const yrs=state.tenure==='custom'?Math.max(1,raw($('customTenure').value)||1):Number(state.tenure);
+ let loan=state.manualLoan?raw($('loanAmount').value):Math.floor(effective*pct/100);loan=Math.max(0,Math.min(effective,loan));
+ const down=Math.max(0,effective-loan),equity=trade-settle,cash=Math.max(0,down-equity),surplus=Math.max(0,equity-down);
+ const monthly=loan>0?Math.ceil((loan+loan*(rate/100)*yrs)/(yrs*12)):0,diff=current>0?monthly-current:null;
+ return{trade,settle,current,price,promo,effective,pct,rate,yrs,loan,down,equity,cash,surplus,monthly,diff};
 }
-function recalc(){
-  const v=vals();
-  $('effectivePrice').value=inputFmt(v.effective);
-  if(!state.manualLoan){suppressLoanInput=true;$('loanAmount').value=inputFmt(v.loan);suppressLoanInput=false;}
-  $('equityLineLabel').textContent=v.equity<0?'Negative Equity':'Net Trade-in Equity';
-  $('equityValue').textContent=signed(v.equity);$('equityLine').classList.toggle('negative',v.equity<0);
-  $('cashLabel').textContent=v.surplus>0?'Surplus Equity':'Cash Required to Upgrade';$('cashRequired').textContent=fmt(v.surplus>0?v.surplus:v.cash);
-  $('newInstalment').textContent=fmt(v.instal);
-  $('monthlyDiffRow').classList.toggle('hidden',v.diff===null);
-  if(v.diff!==null){$('monthlyDiff').textContent=signed(v.diff);$('monthlyDiff').className='value '+(v.diff>0?'negative':v.diff<0?'positive':'');}
-  $('equityResultLabel').textContent=v.equity<0?'Negative Equity':'Net Trade-in Equity';$('equityResult').textContent=signed(v.equity);$('equityResult').className='value '+(v.equity<0?'negative':v.equity>0?'positive':'');
-  $('downPaymentResult').textContent=fmt(v.down);save();
-}
-function save(){const fields={};['tradeIn','settlement','currentInstalment','carPrice','promo','loanAmount','customPct','customInterest','customTenure'].forEach(id=>fields[id]=$(id).value);localStorage.setItem(KEY,JSON.stringify({state,fields}));}
-function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(!d)return;Object.assign(state,d.state||{});Object.entries(d.fields||{}).forEach(([id,v])=>{if($(id))$(id).value=v});}catch(e){}syncModes();recalc();}
-function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
-$('clearBtn').onclick=()=>{if(!confirm('Clear all entered values?'))return;localStorage.removeItem(KEY);['tradeIn','settlement','currentInstalment','carPrice','promo','loanAmount','customPct','customInterest','customTenure'].forEach(id=>$(id).value='');state={loanMode:'60',interestMode:'2.6',tenureMode:'7',manualLoan:false};syncModes();recalc();toast('Cleared')};
-function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
-function drawShare(){
-  const c=$('shareCanvas'),x=c.getContext('2d'),v=vals();x.clearRect(0,0,c.width,c.height);x.fillStyle='#FFFFFF';x.fillRect(0,0,1080,1350);
-  x.fillStyle='#082F53';x.fillRect(0,0,1080,230);
-  x.strokeStyle='#FFFFFF';x.lineWidth=11;x.lineCap='round';x.lineJoin='round';x.beginPath();x.moveTo(72,140);x.lineTo(108,95);x.lineTo(148,79);x.lineTo(232,79);x.lineTo(272,95);x.lineTo(308,140);x.moveTo(72,140);x.lineTo(72,164);x.lineTo(308,164);x.lineTo(308,140);x.moveTo(206,52);x.lineTo(292,52);x.moveTo(264,32);x.lineTo(292,52);x.lineTo(264,72);x.stroke();
-  x.fillStyle='#fff';x.font='700 44px Arial';x.fillText('Car Upgrade Calculator',350,106);x.font='400 24px Arial';x.fillStyle='rgba(255,255,255,.82)';x.fillText('Upgrade summary',350,146);
-  function section(y,title,rows){const h=70+rows.length*70;x.fillStyle='#F5F5F7';rr(x,55,y,970,h,22);x.fill();x.fillStyle='#082F53';x.font='700 24px Arial';x.fillText(title,85,y+40);let yy=y+84;rows.forEach(([l,val,strong])=>{x.fillStyle='#6B6B6B';x.font='400 22px Arial';x.fillText(l,85,yy);x.fillStyle=strong?'#082F53':'#111111';x.font=(strong?'700 30px':'700 24px')+' Arial';x.textAlign='right';x.fillText(val,995,yy);x.textAlign='left';yy+=70});return y+h;}
-  let y=275;y=section(y,'CURRENT CAR',[['Trade-in Value',fmt(v.trade)],['Outstanding Settlement',fmt(v.settle)],[v.equity<0?'Negative Equity':'Net Trade-in Equity',signed(v.equity),true]])+24;
-  y=section(y,'NEW CAR',[['Effective Price',fmt(v.effective)],['Loan Amount',fmt(v.loan)],['Down Payment',fmt(v.down)]])+24;
-  const rows=[[v.surplus>0?'Surplus Equity':'Cash Required to Upgrade',fmt(v.surplus>0?v.surplus:v.cash),true],['New Monthly Instalment',fmt(v.instal),true]];if(v.diff!==null)rows.push(['Monthly Difference',signed(v.diff)]);section(y,'UPGRADE SUMMARY',rows);
-  x.fillStyle='#6B6B6B';x.font='400 21px Arial';x.textAlign='center';x.fillText('Bernice Chua | @bernice.mercedes',540,1312);x.textAlign='left';return c;
-}
-$('shareBtn').onclick=async()=>{const c=drawShare();const blob=await new Promise(r=>c.toBlob(r,'image/png',1));const file=new File([blob],'car-upgrade-summary.png',{type:'image/png'});try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Car Upgrade Summary'})}else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}}catch(e){if(e.name!=='AbortError')toast('Unable to share image')}};
+function save(){const fields={};['tradeIn','settlement','currentInstalment','carPrice','promo','loanAmount','customPct','customInterest','customTenure'].forEach(id=>fields[id]=$(id).value);localStorage.setItem(KEY,JSON.stringify({state,fields}))}
+function calc(){const v=values();$('effectivePrice').value=plain(v.effective);if(!state.manualLoan){settingLoan=true;$('loanAmount').value=plain(v.loan);settingLoan=false}
+ const neg=v.equity<0;$('equityLabel').textContent=neg?'Negative equity':'Net trade-in equity';$('equityResultLabel').textContent=neg?'Negative equity':'Net trade-in equity';$('equityValue').textContent=signed(v.equity);$('equityResult').textContent=signed(v.equity);
+ $('cashLabel').textContent=v.surplus>0?'Surplus equity':'Cash required to upgrade';$('cashValue').textContent=money(v.surplus>0?v.surplus:v.cash);$('monthlyValue').textContent=money(v.monthly);$('downPayment').textContent=money(v.down);
+ $('monthlyDiffRow').classList.toggle('hidden',v.diff===null);if(v.diff!==null)$('monthlyDiff').textContent=signed(v.diff);save()}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d){Object.assign(state,d.state||{});Object.entries(d.fields||{}).forEach(([id,v])=>{if($(id))$(id).value=v})}}catch(e){}sync();calc()}
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1500)}
+$('clearBtn').onclick=()=>{if(!confirm('Clear all entered values?'))return;localStorage.removeItem(KEY);['tradeIn','settlement','currentInstalment','carPrice','loanAmount','customPct','customInterest','customTenure'].forEach(id=>$(id).value='');$('promo').value='0';state={loan:'60',interest:'2.6',tenure:'7',manualLoan:false};sync();calc();toast('Cleared')};
+function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+function shareCanvas(){const v=values(),cnv=$('shareCanvas'),c=cnv.getContext('2d');c.clearRect(0,0,1080,1350);c.fillStyle='#fff';c.fillRect(0,0,1080,1350);c.fillStyle='#0E284D';c.fillRect(0,0,1080,220);
+ // family logo: car + upgrade arrow, transparent on banner
+ c.strokeStyle='#fff';c.lineWidth=10;c.lineCap='round';c.lineJoin='round';c.beginPath();c.moveTo(70,140);c.lineTo(105,98);c.lineTo(145,83);c.lineTo(230,83);c.lineTo(270,98);c.lineTo(305,140);c.moveTo(70,140);c.lineTo(70,163);c.lineTo(305,163);c.lineTo(305,140);c.moveTo(215,53);c.lineTo(300,53);c.moveTo(272,34);c.lineTo(300,53);c.lineTo(272,72);c.stroke();
+ c.fillStyle='#fff';c.font='700 43px Arial';c.fillText('Car Upgrade Calculator',350,103);c.font='400 23px Arial';c.fillStyle='rgba(255,255,255,.82)';c.fillText('Upgrade summary',350,145);
+ function block(y,title,rows){const h=74+rows.length*70;c.fillStyle='#F5F5F7';rr(c,55,y,970,h,24);c.fill();c.fillStyle='#111';c.font='700 24px Arial';c.fillText(title,85,y+42);let yy=y+88;rows.forEach(([l,val,big])=>{c.fillStyle='#6F6F73';c.font='400 21px Arial';c.fillText(l,85,yy);c.fillStyle='#111';c.font=(big?'700 30px':'700 24px')+' Arial';c.textAlign='right';c.fillText(val,995,yy);c.textAlign='left';yy+=70});return y+h}
+ let y=268;y=block(y,'Current car',[['Trade-in value',money(v.trade)],['Outstanding settlement',money(v.settle)],[v.equity<0?'Negative equity':'Net trade-in equity',signed(v.equity),true]])+22;
+ y=block(y,'New car',[['Effective price',money(v.effective)],['Loan amount',money(v.loan)],['Down payment',money(v.down)]])+22;
+ const rows=[[v.surplus>0?'Surplus equity':'Cash required to upgrade',money(v.surplus>0?v.surplus:v.cash),true],['Monthly instalment',money(v.monthly),true]];if(v.diff!==null)rows.push(['Monthly difference',signed(v.diff)]);block(y,'Upgrade summary',rows);
+ c.fillStyle='#6F6F73';c.font='400 21px Arial';c.textAlign='center';c.fillText('Bernice Chua | @bernice.mercedes',540,1310);c.textAlign='left';return cnv}
+$('shareBtn').onclick=async()=>{const cnv=shareCanvas(),blob=await new Promise(r=>cnv.toBlob(r,'image/png',1)),file=new File([blob],'car-upgrade-summary.png',{type:'image/png'});try{if(navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({files:[file],title:'Car Upgrade Summary'});else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}}catch(e){if(e.name!=='AbortError')toast('Unable to share image')}};
 load();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));
 })();
 </script>
