@@ -135,7 +135,7 @@ canvas{display:none}
   </section>
   <footer class="footer">Bernice Chua | @bernice.mercedes</footer>
 </main>
-<img id="shareLogo" src="logo.png" alt="" hidden><canvas id="shareCanvas" width="1080" height="1440"></canvas><div class="toast" id="toast"></div>
+<img id="shareLogo" src="logo.png" alt="" hidden><canvas id="shareCanvas" width="1080" height="1120"></canvas><div class="toast" id="toast"></div>
 <script>
 (()=>{
 const $=id=>document.getElementById(id);
@@ -189,14 +189,49 @@ function load(){let d=null;for(const key of [STORAGE_KEY,...LEGACY_KEYS]){try{d=
 function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1500)}
 $('clearBtn').onclick=()=>{if(!confirm('Clear all entered values?'))return;localStorage.removeItem(STORAGE_KEY);LEGACY_KEYS.forEach(k=>localStorage.removeItem(k));['tradeIn','settlement','currentInstalment','carPrice','loanAmount','customPct','customInterest','customTenure'].forEach(id=>$(id).value='');state={loan:'60',interest:'2.6',tenure:'7',manualLoan:false};sync();calc();toast('Cleared')};
 function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
-function shareCanvas(){const v=values(),cnv=$('shareCanvas'),c=cnv.getContext('2d');c.clearRect(0,0,1080,1440);c.fillStyle='#fff';c.fillRect(0,0,1080,1440);c.fillStyle='#0E284D';c.fillRect(0,0,1080,220);
- const logo=$('shareLogo');if(logo&&logo.complete)c.drawImage(logo,58,34,152,152);
- c.fillStyle='#fff';c.font='700 48px system-ui, Arial';c.fillText('Car Upgrade Calculator',245,102);c.font='400 28px system-ui, Arial';c.fillStyle='rgba(255,255,255,.84)';c.fillText('Upgrade summary',245,150);
- function block(y,title,rows){const rowH=80,h=72+rows.length*rowH;c.fillStyle='#F5F5F7';rr(c,55,y,970,h,24);c.fill();c.fillStyle='#111';c.font='700 30px system-ui, Arial';c.fillText(title,85,y+44);let yy=y+96;rows.forEach(([l,val,big])=>{c.fillStyle='#5F5F63';c.font='500 29px system-ui, Arial';c.fillText(l,85,yy);c.fillStyle='#111';c.font=(big?'700 40px':'700 34px')+' system-ui, Arial';c.textAlign='right';c.fillText(val,995,yy);c.textAlign='left';yy+=rowH});return y+h}
- let y=252;y=block(y,'Current car',[['Trade-in value',money(v.trade)],['Outstanding settlement',money(v.settle)],[v.equity<0?'Negative equity':'Net trade-in equity',signed(v.equity),true]])+18;
- y=block(y,'New car',[['New car price',money(v.price)],['Down payment',money(v.down)],['Loan amount',money(v.loan)]])+18;
- const rows=[[v.surplus>0?'Surplus equity':'Cash required',money(v.surplus>0?v.surplus:v.cash),true],['Monthly instalment',money(v.monthly),true]];if(v.diff!==null)rows.push(['Monthly difference',signed(v.diff)]);block(y,'Upgrade summary',rows);
- c.fillStyle='#6F6F73';c.font='400 28px system-ui, Arial';c.textAlign='center';c.fillText('Bernice Chua | @bernice.mercedes',540,1385);c.textAlign='left';return cnv}
+function shareCanvas(){
+ const v=values(),cnv=$('shareCanvas'),c=cnv.getContext('2d');
+ c.clearRect(0,0,1080,1120);
+ c.fillStyle='#fff';c.fillRect(0,0,1080,1120);
+ // Family header
+ c.fillStyle='#0E284D';c.fillRect(0,0,1080,205);
+ const logo=$('shareLogo');if(logo&&logo.complete)c.drawImage(logo,58,30,145,145);
+ c.fillStyle='#fff';c.font='700 52px system-ui, Arial';c.fillText('Car Upgrade Calculator',235,92);
+ c.font='400 30px system-ui, Arial';c.fillStyle='rgba(255,255,255,.86)';c.fillText('Upgrade summary',235,140);
+
+ function card(x,y,w,h,title){
+   c.fillStyle='#F5F5F7';rr(c,x,y,w,h,24);c.fill();
+   c.fillStyle='#111';c.font='700 34px system-ui, Arial';c.fillText(title,x+28,y+46);
+ }
+ function row(x,y,w,label,value,large=false){
+   c.fillStyle='#626266';c.font='600 30px system-ui, Arial';c.textAlign='left';c.fillText(label,x,y);
+   c.fillStyle='#111';c.font=(large?'700 44px':'700 38px')+' system-ui, Arial';c.textAlign='right';c.fillText(value,x+w,y);
+   c.textAlign='left';
+ }
+ // Two compact family cards side-by-side
+ const gap=22, margin=50, cardW=(1080-margin*2-gap)/2;
+ card(margin,235,cardW,330,'Current car');
+ row(margin+28,320,cardW-56,'Trade-in value',money(v.trade));
+ row(margin+28,395,cardW-56,'Settlement',money(v.settlement));
+ row(margin+28,470,cardW-56,'Net equity',signedMoney(v.equity),true);
+
+ const x2=margin+cardW+gap;
+ card(x2,235,cardW,330,'New car');
+ row(x2+28,320,cardW-56,'Car price',money(v.price));
+ row(x2+28,395,cardW-56,'Down payment',money(v.down));
+ row(x2+28,470,cardW-56,'Loan amount',money(v.loan),true);
+
+ // Key summary full-width: fewer rows, much larger text
+ card(margin,590,980,345,'Upgrade summary');
+ c.fillStyle='#626266';c.font='600 31px system-ui, Arial';c.fillText('Cash required',80,680);
+ c.fillStyle='#111';c.font='700 58px system-ui, Arial';c.textAlign='right';c.fillText(money(Math.max(0,v.cashRequired)),995,680);c.textAlign='left';
+ c.strokeStyle='#DEDEE2';c.lineWidth=2;c.beginPath();c.moveTo(80,715);c.lineTo(995,715);c.stroke();
+ row(80,790,915,'Monthly instalment',money(v.monthly),true);
+ if(v.currentInst>0) row(80,865,915,'Monthly difference',signedMoney(v.monthly-v.currentInst),true);
+
+ c.fillStyle='#6F6F73';c.font='400 30px system-ui, Arial';c.textAlign='center';c.fillText('Bernice Chua | @bernice.mercedes',540,1055);c.textAlign='left';
+ return cnv
+}
 $('shareBtn').onclick=async()=>{const cnv=shareCanvas(),blob=await new Promise(r=>cnv.toBlob(r,'image/png',1)),file=new File([blob],'car-upgrade-summary.png',{type:'image/png'});try{if(navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({files:[file],title:'Car Upgrade Summary'});else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}}catch(e){if(e.name!=='AbortError')toast('Unable to share image')}};
 window.addEventListener('resize',()=>calc());
 load();if('serviceWorker'in navigator)window.addEventListener('load',async()=>{try{await navigator.serviceWorker.register('./sw.js',{scope:'./'})}catch(e){console.error('Service worker registration failed',e)}});
