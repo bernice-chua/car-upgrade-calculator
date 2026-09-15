@@ -26,50 +26,50 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-body{padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+body{padding-bottom:calc(10px + env(safe-area-inset-bottom))}
 button,input{font:inherit;color:inherit}
-.app{width:min(520px,100%);margin:0 auto;padding:16px 16px 18px}
-.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:18px;margin:1px 2px 12px}
-.topbar h1{font-size:27px;line-height:1.08;letter-spacing:-.6px;margin:0;font-weight:800;white-space:nowrap}
-.top-action{appearance:none;border:0;background:transparent;min-width:52px;min-height:44px;padding:0 4px;color:#5D5D60;font-size:18px;font-weight:700;cursor:pointer}
+.app{width:min(520px,100%);margin:0 auto;padding:10px 16px 10px}
+.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:16px;margin:0 2px 7px}
+.topbar h1{font-size:27px;line-height:1.08;letter-spacing:-.55px;margin:0;font-weight:800;white-space:nowrap}
+.top-action{appearance:none;border:0;background:transparent;min-width:50px;min-height:40px;padding:0 3px;color:#66666A;font-size:18px;font-weight:600;cursor:pointer}
 .top-action:active{opacity:.55}
-.card{background:var(--card);border-radius:28px;padding:15px 20px 17px;box-shadow:var(--shadow)}
-.section-title{font-size:15px;font-weight:800;margin:0 0 8px}
-.section{margin-bottom:9px}.section:last-child{margin-bottom:0}
+.card{background:var(--card);border-radius:28px;padding:11px 20px 12px;box-shadow:var(--shadow)}
+.section-title{font-size:15.5px;font-weight:700;margin:0 0 5px;letter-spacing:-.1px}
+.section{margin-bottom:4px}.section:last-child{margin-bottom:0}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.metric-field{min-width:0}.metric-field .metric-label{display:block;font-size:14px;font-weight:800;margin:0 0 6px;line-height:1.2}.metric-display{height:48px;display:flex;align-items:center;min-width:0;padding:0 4px;font-size:28px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.4px;overflow:hidden}
-.field{margin-bottom:8px}.field:last-child{margin-bottom:0}
-label{display:block;font-size:14px;font-weight:800;margin:0 0 6px;line-height:1.2}
-input[type="text"],input[type="number"]{width:100%;height:48px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:0 15px;font-size:17px;outline:none}
+.metric-field{min-width:0}.metric-field .metric-label{display:block;font-size:13.5px;font-weight:600;margin:0 0 4px;line-height:1.2;color:#3A3A3C}.metric-display{height:44px;display:flex;align-items:center;min-width:0;padding:0 4px;font-size:26px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.3px;overflow:hidden}
+.field{margin-bottom:5px}.field:last-child{margin-bottom:0}
+label{display:block;font-size:13.5px;font-weight:700;margin:0 0 4px;line-height:1.2;color:#2F2F31}
+input[type="text"],input[type="number"]{width:100%;height:44px;border:1px solid var(--line);border-radius:17px;background:#fff;padding:0 15px;font-size:17px;outline:none}
 .money{position:relative}.money::before{content:'$';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:19px;line-height:1;color:#77777A;pointer-events:none;z-index:1}
 .money>input.money-input{padding-left:44px;padding-right:14px;font-variant-numeric:tabular-nums}
 input:focus{border-color:#AFAFB3;box-shadow:0 0 0 2px rgba(0,0,0,.04)}
-input.calc{background:var(--calc);font-size:18px;font-weight:800;font-variant-numeric:tabular-nums}
+input.calc{background:var(--calc);font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
 input.calc.manual{background:#fff;border-color:#AFAFB3}
-.rule{height:1px;background:#EEEEF0;margin:9px 0}
-.seg-label{font-size:14px;font-weight:800;margin:0 0 6px}
-.segment{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
-.segment button,.segment input{height:46px;border:1px solid var(--line);border-radius:18px;background:#fff;font-size:16px;font-weight:800;text-align:center;padding:0 6px}
+.rule{height:1px;background:#EEEEF0;margin:5px 0}
+.seg-label{font-size:13.5px;font-weight:700;margin:0 0 4px;color:#2F2F31}
+.segment{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:5px}
+.segment button,.segment input{height:42px;border:1px solid var(--line);border-radius:17px;background:#fff;font-size:16px;font-weight:700;text-align:center;padding:0 6px}
 .segment button{cursor:pointer}.segment button.active{background:var(--selected);border-color:#C6C6C9}.segment input.custom-active{background:var(--selected);border-color:#C6C6C9}
 .segment input::placeholder{color:transparent}
-.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px}
-.result-tile{min-height:88px;border:1px solid var(--line);border-radius:20px;background:#F8F8F8;padding:12px 15px;display:flex;flex-direction:column;justify-content:space-between}
-.result-tile .name{font-size:13px;font-weight:800;line-height:1.25}.result-tile .value{font-size:31px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.5px}
-.support{margin-top:9px;border-top:1px solid #ECECEE;padding-top:2px}
-.support-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:8px 1px 5px;font-size:13px}.support-row span:first-child{color:var(--muted);font-weight:700}.support-row strong{font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:0}
+.result-tile{min-height:76px;border:1px solid var(--line);border-radius:19px;background:#F8F8F8;padding:9px 13px;display:flex;flex-direction:column;justify-content:space-between}
+.result-tile .name{font-size:13.5px;font-weight:600;line-height:1.15;color:#3A3A3C}.result-tile .value{font-size:29px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.35px}
+.support{margin-top:4px;border-top:1px solid #ECECEE;padding-top:0}
+.support-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:5px 1px 2px;font-size:13px}.support-row span:first-child{color:var(--muted);font-weight:500}.support-row strong{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .hidden{display:none!important}
-.footer{text-align:center;color:#77777A;font-size:13px;padding:9px 0 0}
+.footer{text-align:center;color:#77777A;font-size:13px;font-weight:400;padding:5px 0 0}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,15px);opacity:0;background:#111;color:#fff;padding:10px 14px;border-radius:999px;font-size:12px;transition:.2s;pointer-events:none;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
 canvas{display:none}
 @media(max-width:440px){
   .app{padding-left:14px;padding-right:14px}
   .topbar{gap:16px;margin-left:3px;margin-right:3px}
   .topbar h1{font-size:24px}.top-action{font-size:16px}
-  .card{padding:14px 15px 15px;border-radius:24px}
-  .section{margin-bottom:8px}.rule{margin:9px 0}
-  input[type="text"],input[type="number"]{height:48px}
-  .metric-display{height:48px;font-size:26px}
-  .segment button,.segment input{height:46px;font-size:14px;border-radius:16px}
+  .card{padding:11px 15px 12px;border-radius:24px}
+  .section{margin-bottom:4px}.rule{margin:5px 0}
+  input[type="text"],input[type="number"]{height:44px}
+  .metric-display{height:44px;font-size:25px}
+  .segment button,.segment input{height:42px;font-size:14px;border-radius:16px}
 }
 @media(max-width:370px){.topbar{gap:8px}.topbar h1{font-size:20px}.top-action{min-width:44px;font-size:15px}}
 @media(max-width:355px){.grid2{grid-template-columns:1fr}.metric-display{padding-left:0}.results-grid{grid-template-columns:1fr}}
@@ -125,7 +125,7 @@ canvas{display:none}
 
     <div class="section">
       <div class="results-grid">
-        <div class="result-tile"><div class="name" id="cashLabel">Cash required to upgrade</div><div class="value" id="cashValue">$0</div></div>
+        <div class="result-tile"><div class="name" id="cashLabel">Cash required</div><div class="value" id="cashValue">$0</div></div>
         <div class="result-tile"><div class="name">Monthly instalment</div><div class="value" id="monthlyValue">$0</div></div>
       </div>
       <div class="support hidden" id="supportBlock">
@@ -135,7 +135,7 @@ canvas{display:none}
   </section>
   <footer class="footer">Bernice Chua | @bernice.mercedes</footer>
 </main>
-<img id="shareLogo" src="logo.png" alt="" hidden><canvas id="shareCanvas" width="1080" height="1350"></canvas><div class="toast" id="toast"></div>
+<img id="shareLogo" src="logo.png" alt="" hidden><canvas id="shareCanvas" width="1080" height="1440"></canvas><div class="toast" id="toast"></div>
 <script>
 (()=>{
 const $=id=>document.getElementById(id);
@@ -183,20 +183,20 @@ function fitNumber(el,text,max=31,min=18){
 function calc(){const v=values();fitNumber($('downPaymentTop'),money(v.down),28,18);if(!state.manualLoan||document.activeElement!==$('loanAmount')){settingLoan=true;$('loanAmount').value=v.loan?plain(v.loan):'';settingLoan=false}
  $('loanAmount').classList.toggle('manual',state.manualLoan);
  const neg=v.equity<0;$('equityLabel').textContent=neg?'Negative equity':'Net trade-in equity';fitNumber($('equityValue'),signed(v.equity),28,18);
- $('cashLabel').textContent=v.surplus>0?'Surplus equity':'Cash required to upgrade';fitNumber($('cashValue'),money(v.surplus>0?v.surplus:v.cash),31,18);fitNumber($('monthlyValue'),money(v.monthly),31,18);
+ $('cashLabel').textContent=v.surplus>0?'Surplus equity':'Cash required';fitNumber($('cashValue'),money(v.surplus>0?v.surplus:v.cash),31,18);fitNumber($('monthlyValue'),money(v.monthly),31,18);
  $('monthlyDiffRow').classList.toggle('hidden',v.diff===null);$('supportBlock').classList.toggle('hidden',v.diff===null);if(v.diff!==null)fitNumber($('monthlyDiff'),signed(v.diff),16);save()}
 function load(){let d=null;for(const key of [STORAGE_KEY,...LEGACY_KEYS]){try{d=JSON.parse(localStorage.getItem(key)||'null')}catch(e){d=null}if(d)break}if(d){Object.assign(state,d.state||{});Object.entries(d.fields||{}).forEach(([id,v])=>{if($(id))$(id).value=v});save();LEGACY_KEYS.forEach(k=>localStorage.removeItem(k))}sync();calc()}
 function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1500)}
 $('clearBtn').onclick=()=>{if(!confirm('Clear all entered values?'))return;localStorage.removeItem(STORAGE_KEY);LEGACY_KEYS.forEach(k=>localStorage.removeItem(k));['tradeIn','settlement','currentInstalment','carPrice','loanAmount','customPct','customInterest','customTenure'].forEach(id=>$(id).value='');state={loan:'60',interest:'2.6',tenure:'7',manualLoan:false};sync();calc();toast('Cleared')};
 function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
-function shareCanvas(){const v=values(),cnv=$('shareCanvas'),c=cnv.getContext('2d');c.clearRect(0,0,1080,1350);c.fillStyle='#fff';c.fillRect(0,0,1080,1350);c.fillStyle='#0E284D';c.fillRect(0,0,1080,220);
- const logo=$('shareLogo');if(logo&&logo.complete)c.drawImage(logo,58,36,148,148);
- c.fillStyle='#fff';c.font='700 43px system-ui, Arial';c.fillText('Car Upgrade Calculator',245,103);c.font='400 23px system-ui, Arial';c.fillStyle='rgba(255,255,255,.82)';c.fillText('Upgrade summary',245,145);
- function block(y,title,rows){const h=74+rows.length*70;c.fillStyle='#F5F5F7';rr(c,55,y,970,h,24);c.fill();c.fillStyle='#111';c.font='700 24px system-ui, Arial';c.fillText(title,85,y+42);let yy=y+88;rows.forEach(([l,val,big])=>{c.fillStyle='#6F6F73';c.font='400 21px system-ui, Arial';c.fillText(l,85,yy);c.fillStyle='#111';c.font=(big?'700 30px':'700 24px')+' system-ui, Arial';c.textAlign='right';c.fillText(val,995,yy);c.textAlign='left';yy+=70});return y+h}
- let y=268;y=block(y,'Current car',[['Trade-in value',money(v.trade)],['Outstanding settlement',money(v.settle)],[v.equity<0?'Negative equity':'Net trade-in equity',signed(v.equity),true]])+22;
- y=block(y,'New car',[['New car price',money(v.price)],['Down payment',money(v.down)],['Loan amount',money(v.loan)]])+22;
- const rows=[[v.surplus>0?'Surplus equity':'Cash required to upgrade',money(v.surplus>0?v.surplus:v.cash),true],['Monthly instalment',money(v.monthly),true]];if(v.diff!==null)rows.push(['Monthly difference',signed(v.diff)]);block(y,'Upgrade summary',rows);
- c.fillStyle='#6F6F73';c.font='400 21px system-ui, Arial';c.textAlign='center';c.fillText('Bernice Chua | @bernice.mercedes',540,1310);c.textAlign='left';return cnv}
+function shareCanvas(){const v=values(),cnv=$('shareCanvas'),c=cnv.getContext('2d');c.clearRect(0,0,1080,1440);c.fillStyle='#fff';c.fillRect(0,0,1080,1440);c.fillStyle='#0E284D';c.fillRect(0,0,1080,220);
+ const logo=$('shareLogo');if(logo&&logo.complete)c.drawImage(logo,58,34,152,152);
+ c.fillStyle='#fff';c.font='700 48px system-ui, Arial';c.fillText('Car Upgrade Calculator',245,102);c.font='400 28px system-ui, Arial';c.fillStyle='rgba(255,255,255,.84)';c.fillText('Upgrade summary',245,150);
+ function block(y,title,rows){const rowH=80,h=72+rows.length*rowH;c.fillStyle='#F5F5F7';rr(c,55,y,970,h,24);c.fill();c.fillStyle='#111';c.font='700 30px system-ui, Arial';c.fillText(title,85,y+44);let yy=y+96;rows.forEach(([l,val,big])=>{c.fillStyle='#5F5F63';c.font='500 29px system-ui, Arial';c.fillText(l,85,yy);c.fillStyle='#111';c.font=(big?'700 40px':'700 34px')+' system-ui, Arial';c.textAlign='right';c.fillText(val,995,yy);c.textAlign='left';yy+=rowH});return y+h}
+ let y=252;y=block(y,'Current car',[['Trade-in value',money(v.trade)],['Outstanding settlement',money(v.settle)],[v.equity<0?'Negative equity':'Net trade-in equity',signed(v.equity),true]])+18;
+ y=block(y,'New car',[['New car price',money(v.price)],['Down payment',money(v.down)],['Loan amount',money(v.loan)]])+18;
+ const rows=[[v.surplus>0?'Surplus equity':'Cash required',money(v.surplus>0?v.surplus:v.cash),true],['Monthly instalment',money(v.monthly),true]];if(v.diff!==null)rows.push(['Monthly difference',signed(v.diff)]);block(y,'Upgrade summary',rows);
+ c.fillStyle='#6F6F73';c.font='400 28px system-ui, Arial';c.textAlign='center';c.fillText('Bernice Chua | @bernice.mercedes',540,1385);c.textAlign='left';return cnv}
 $('shareBtn').onclick=async()=>{const cnv=shareCanvas(),blob=await new Promise(r=>cnv.toBlob(r,'image/png',1)),file=new File([blob],'car-upgrade-summary.png',{type:'image/png'});try{if(navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({files:[file],title:'Car Upgrade Summary'});else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}}catch(e){if(e.name!=='AbortError')toast('Unable to share image')}};
 window.addEventListener('resize',()=>calc());
 load();if('serviceWorker'in navigator)window.addEventListener('load',async()=>{try{await navigator.serviceWorker.register('./sw.js',{scope:'./'})}catch(e){console.error('Service worker registration failed',e)}});
