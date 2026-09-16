@@ -29,44 +29,44 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-f
 body{padding-bottom:calc(10px + env(safe-area-inset-bottom))}
 button,input{font:inherit;color:inherit}
 .app{width:min(520px,100%);margin:0 auto;padding:10px 16px 10px}
-.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:16px;margin:0 2px 7px}
+.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:16px;margin:0 2px 9px}
 .topbar h1{font-size:27px;line-height:1.08;letter-spacing:-.55px;margin:0;font-weight:800;white-space:nowrap}
 .top-action{appearance:none;border:0;background:transparent;min-width:50px;min-height:40px;padding:0 3px;color:#66666A;font-size:18px;font-weight:600;cursor:pointer}
 .top-action:active{opacity:.55}
-.card{background:var(--card);border-radius:28px;padding:11px 20px 12px;box-shadow:var(--shadow)}
-.section-title{font-size:16px;font-weight:700;margin:0 0 5px;letter-spacing:-.1px}
+.card{background:var(--card);border-radius:28px;padding:14px 20px 14px;box-shadow:var(--shadow)}
+.section-title{font-size:17px;font-weight:700;margin:0 0 7px;letter-spacing:-.1px}
 .section{margin-bottom:4px}.section:last-child{margin-bottom:0}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.metric-field{min-width:0}.metric-field .metric-label{display:block;font-size:14px;font-weight:600;margin:0 0 4px;line-height:1.2;color:#3A3A3C}.metric-display{height:44px;display:flex;align-items:center;min-width:0;padding:0 4px;font-size:26px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.3px;overflow:hidden}
-.field{margin-bottom:5px}.field:last-child{margin-bottom:0}
-label{display:block;font-size:14px;font-weight:700;margin:0 0 4px;line-height:1.2;color:#2F2F31}
-input[type="text"],input[type="number"]{width:100%;height:44px;border:1px solid var(--line);border-radius:17px;background:#fff;padding:0 15px;font-size:17px;outline:none}
-.money{position:relative}.money::before{content:'$';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:19px;line-height:1;color:#77777A;pointer-events:none;z-index:1}
-.money>input.money-input{padding-left:44px;padding-right:14px;font-variant-numeric:tabular-nums}
-.suffix{position:relative}.suffix::after{content:'yr';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:15px;color:#77777A;pointer-events:none}.suffix>input{padding-right:42px;font-variant-numeric:tabular-nums}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.metric-field{min-width:0}.metric-field .metric-label{display:block;font-size:14px;font-weight:700;margin:0 0 5px;line-height:1.2;color:#2F2F31}.metric-display{height:46px;display:flex;align-items:center;min-width:0;padding:0 4px;font-size:27px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.3px;overflow:hidden}
+.field{margin-bottom:7px}.field:last-child{margin-bottom:0}
+label{display:block;font-size:14px;font-weight:700;margin:0 0 5px;line-height:1.2;color:#2F2F31}
+input[type="text"],input[type="number"]{width:100%;height:46px;border:1px solid var(--line);border-radius:17px;background:#fff;padding:0 15px;font-size:18px;outline:none}
+.money{position:relative}.money::before{content:'$';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:18px;line-height:1;color:#77777A;pointer-events:none;z-index:1}
+.money>input.money-input{padding-left:46px;padding-right:14px;font-variant-numeric:tabular-nums}
+.suffix{position:relative}.suffix::after{content:'yr';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:15px;color:#77777A;pointer-events:none}.suffix>input{padding-right:42px;font-variant-numeric:tabular-nums;text-align:left}
 input:focus{border-color:#AFAFB3;box-shadow:0 0 0 2px rgba(0,0,0,.04)}
 input.calc{background:var(--calc);font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
 input.calc.manual{background:#fff;border-color:#AFAFB3}
-.rule{height:1px;background:#EEEEF0;margin:5px 0}
-.seg-label{font-size:14px;font-weight:700;margin:0 0 4px;color:#2F2F31}
-.segment{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:5px}
+.rule{height:1px;background:#EEEEF0;margin:8px 0}
+.seg-label{font-size:14px;font-weight:700;margin:0 0 5px;color:#2F2F31}
+.segment{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
 .segment button,.segment input{height:42px;border:1px solid var(--line);border-radius:17px;background:#fff;font-size:16px;font-weight:700;text-align:center;padding:0 6px}
 .segment button{cursor:pointer}.segment button.active{background:var(--selected);border-color:#C6C6C9}.segment input.custom-active{background:var(--selected);border-color:#C6C6C9}
 .segment input::placeholder{color:transparent}
-.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:0}
-.result-tile{min-height:76px;border:1px solid var(--line);border-radius:19px;background:#F8F8F8;padding:9px 13px;display:flex;flex-direction:column;justify-content:space-between}
-.result-tile .name{font-size:14px;font-weight:600;line-height:1.15;color:#3A3A3C}.result-tile .value{font-size:29px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.35px}
-.support{margin-top:4px;border-top:1px solid #ECECEE;padding-top:0}
-.support-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:5px 1px 2px;font-size:13.5px}.support-row span:first-child{color:var(--muted);font-weight:500}.support-row strong{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px}
+.result-tile{min-height:82px;border:1px solid var(--line);border-radius:19px;background:#F8F8F8;padding:11px 14px;display:flex;flex-direction:column;justify-content:space-between}
+.result-tile .name{font-size:14px;font-weight:700;line-height:1.15;color:#2F2F31}.result-tile .value{font-size:31px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.35px}
+.support{margin-top:6px;border-top:1px solid #ECECEE;padding-top:2px}
+.support-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:6px 1px 3px;font-size:14px}.support-row span:first-child{color:var(--muted);font-weight:600}.support-row strong{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .hidden{display:none!important}
-.footer{text-align:center;color:#77777A;font-size:13px;font-weight:400;padding:5px 0 0}
+.footer{text-align:center;color:#77777A;font-size:13px;font-weight:400;padding:8px 0 0}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,15px);opacity:0;background:#111;color:#fff;padding:10px 14px;border-radius:999px;font-size:12px;transition:.2s;pointer-events:none;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
 canvas{display:none}
 @media(max-width:440px){
   .app{padding-left:14px;padding-right:14px}
   .topbar{gap:16px;margin-left:3px;margin-right:3px}
   .topbar h1{font-size:24px}.top-action{font-size:16px}
-  .card{padding:11px 15px 12px;border-radius:24px}
+  .card{padding:13px 15px 14px;border-radius:24px}
   .section{margin-bottom:4px}.rule{margin:5px 0}
   input[type="text"],input[type="number"]{height:44px}
   .metric-display{height:44px;font-size:25px}
@@ -124,8 +124,8 @@ canvas{display:none}
 
     <div class="section">
       <div class="results-grid">
-        <div class="result-tile"><div class="name" id="cashLabel">Cash required</div><div class="value" id="cashValue">$0</div></div>
-        <div class="result-tile"><div class="name">Monthly instalment</div><div class="value" id="monthlyValue">$0</div></div>
+        <div class="result-tile"><div class="name" id="cashLabel">Cash required</div><div class="value" id="cashValue" aria-live="polite">$0</div></div>
+        <div class="result-tile"><div class="name">Monthly instalment</div><div class="value" id="monthlyValue" aria-live="polite">$0</div></div>
       </div>
       <div class="support hidden" id="supportBlock">
         <div class="support-row hidden" id="monthlyDiffRow"><span>Monthly difference</span><strong id="monthlyDiff">$0</strong></div>
@@ -164,17 +164,17 @@ function sync(){
  });
 }
 function values(){
- const trade=raw($('tradeIn').value),settle=raw($('settlement').value),current=raw($('currentInstalment').value),price=raw($('carPrice').value),effective=Math.max(0,price);
+ const trade=raw($('tradeIn').value),settle=raw($('settlement').value),current=raw($('currentInstalment').value),price=raw($('carPrice').value),priceBase=Math.max(0,price);
  const pct=state.loan==='custom'?Math.max(0,Math.min(100,raw($('customPct').value))):Number(state.loan);
  const rate=state.interest==='custom'?Math.max(0,raw($('customInterest').value)):Number(state.interest);
  const yrs=Math.max(1,Math.min(15,raw($('loanTenure').value)||7));
- let loan=state.manualLoan?raw($('loanAmount').value):Math.floor(effective*pct/100);loan=Math.max(0,Math.min(effective,loan));
- const down=Math.max(0,effective-loan),equity=trade-settle,cash=Math.max(0,down-equity),surplus=Math.max(0,equity-down);
+ let loan=state.manualLoan?raw($('loanAmount').value):Math.floor(priceBase*pct/100);loan=Math.max(0,Math.min(priceBase,loan));
+ const down=Math.max(0,priceBase-loan),equity=trade-settle,cash=Math.max(0,down-equity),surplus=Math.max(0,equity-down);
  const monthly=loan>0?Math.ceil((loan+loan*(rate/100)*yrs)/(yrs*12)):0,diff=current>0?monthly-current:null;
- return{trade,settle,current,price,effective,pct,rate,yrs,loan,down,equity,cash,surplus,monthly,diff};
+ return{trade,settle,current,price,pct,rate,yrs,loan,down,equity,cash,surplus,monthly,diff};
 }
 function save(){const fields={};['tradeIn','settlement','currentInstalment','carPrice','loanAmount','loanTenure','customPct','customInterest'].forEach(id=>fields[id]=$(id).value);localStorage.setItem(STORAGE_KEY,JSON.stringify({state,fields}))}
-function fitNumber(el,text,max=31,min=18){
+function fitNumber(el,text,max=32,min=18){
  el.textContent=text;el.style.fontSize=max+'px';
  let size=max;
  while(size>min&&el.scrollWidth>el.clientWidth){size-=1;el.style.fontSize=size+'px'}
@@ -190,36 +190,63 @@ $('clearBtn').onclick=()=>{if(!confirm('Clear all entered values?'))return;local
 function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
 function shareCanvas(){
  const v=values(),cnv=$('shareCanvas'),c=cnv.getContext('2d');
- cnv.width=1080;cnv.height=980;
- c.clearRect(0,0,1080,980);
- c.fillStyle='#fff';c.fillRect(0,0,1080,980);
- c.fillStyle='#0E284D';c.fillRect(0,0,1080,190);
- const logo=$('shareLogo');if(logo&&logo.complete)c.drawImage(logo,56,28,134,134);
- c.fillStyle='#fff';c.font='700 50px system-ui, Arial';c.fillText('Car Upgrade Calculator',220,82);
- c.font='400 30px system-ui, Arial';c.fillStyle='rgba(255,255,255,.88)';c.fillText('Upgrade summary',220,130);
- function card(x,y,w,h,title){c.fillStyle='#F5F5F7';rr(c,x,y,w,h,24);c.fill();c.fillStyle='#111';c.font='700 34px system-ui, Arial';c.fillText(title,x+28,y+47)}
- function row(x,y,w,label,value,valueSize=38){c.fillStyle='#5F5F63';c.font='600 29px system-ui, Arial';c.textAlign='left';c.fillText(label,x,y);c.fillStyle='#111';c.font='700 '+valueSize+'px system-ui, Arial';c.textAlign='right';c.fillText(value,x+w,y);c.textAlign='left'}
+ cnv.width=1080;cnv.height=940;
+ c.clearRect(0,0,1080,940);
+ c.fillStyle='#fff';c.fillRect(0,0,1080,940);
+ c.fillStyle='#0E284D';c.fillRect(0,0,1080,170);
+ const logo=$('shareLogo');if(logo&&logo.complete&&logo.naturalWidth)c.drawImage(logo,56,24,120,120);
+ c.fillStyle='#fff';c.font='700 56px system-ui, Arial';c.fillText('Car Upgrade Calculator',210,92);
+ function card(x,y,w,h,title){c.fillStyle='#F5F5F7';rr(c,x,y,w,h,24);c.fill();c.fillStyle='#111';c.font='700 32px system-ui, Arial';c.fillText(title,x+28,y+46)}
+ function row(x,y,w,label,value,valueSize=38){c.fillStyle='#5F5F63';c.font='600 28px system-ui, Arial';c.textAlign='left';c.fillText(label,x,y);c.fillStyle='#111';c.font='700 '+valueSize+'px system-ui, Arial';c.textAlign='right';c.fillText(value,x+w,y);c.textAlign='left'}
  const margin=48,gap=22,cardW=(1080-margin*2-gap)/2;
- card(margin,220,cardW,282,'Current car');
- row(margin+28,304,cardW-56,'Trade-in value',money(v.trade));
- row(margin+28,376,cardW-56,'Settlement',money(v.settle));
- row(margin+28,448,cardW-56,'Net equity',signed(v.equity),40);
+ card(margin,200,cardW,272,'Current car');
+ row(margin+28,282,cardW-56,'Trade-in value',money(v.trade));
+ row(margin+28,352,cardW-56,'Outstanding settlement',money(v.settle));
+ row(margin+28,422,cardW-56,'Net equity',signed(v.equity),40);
  const x2=margin+cardW+gap;
- card(x2,220,cardW,282,'New car');
- row(x2+28,304,cardW-56,'Car price',money(v.price));
- row(x2+28,376,cardW-56,'Down payment',money(v.down));
- row(x2+28,448,cardW-56,'Loan amount',money(v.loan),40);
- card(margin,525,984,315,'Upgrade summary');
- c.fillStyle='#5F5F63';c.font='600 31px system-ui, Arial';c.fillText(v.surplus>0?'Surplus equity':'Cash required',78,612);
- c.fillStyle='#111';c.font='700 62px system-ui, Arial';c.textAlign='right';c.fillText(money(v.surplus>0?v.surplus:v.cash),1000,616);c.textAlign='left';
- c.strokeStyle='#DEDEE2';c.lineWidth=2;c.beginPath();c.moveTo(78,646);c.lineTo(1000,646);c.stroke();
- row(78,718,922,'Monthly instalment',money(v.monthly),46);
- row(78,786,922,'Loan tenure',Math.round(v.yrs)+' yr',40);
- if(v.diff!==null) row(78,832,922,'Monthly difference',signed(v.diff),40);
- c.fillStyle='#6F6F73';c.font='400 30px system-ui, Arial';c.textAlign='center';c.fillText('Bernice Chua | @bernice.mercedes',540,930);c.textAlign='left';
+ card(x2,200,cardW,272,'New car');
+ row(x2+28,282,cardW-56,'Car price',money(v.price));
+ row(x2+28,352,cardW-56,'Down payment',money(v.down));
+ row(x2+28,422,cardW-56,'Loan amount',money(v.loan),40);
+ card(margin,492,984,286,'Summary');
+ c.fillStyle='#5F5F63';c.font='600 31px system-ui, Arial';c.fillText(v.surplus>0?'Surplus equity':'Cash required',78,575);
+ c.fillStyle='#111';c.font='700 66px system-ui, Arial';c.textAlign='right';c.fillText(money(v.surplus>0?v.surplus:v.cash),1000,578);c.textAlign='left';
+ c.strokeStyle='#DEDEE2';c.lineWidth=2;c.beginPath();c.moveTo(78,608);c.lineTo(1000,608);c.stroke();
+ row(78,682,922,'Monthly instalment',money(v.monthly),48);
+ row(78,744,922,'Loan tenure',Math.round(v.yrs)+' yr',40);
+ if(v.diff!==null) row(78,786,922,'Monthly difference',signed(v.diff),40);
+ c.fillStyle='#6F6F73';c.font='400 30px system-ui, Arial';c.textAlign='center';c.fillText('Bernice Chua | @bernice.mercedes',540,898);c.textAlign='left';
  return cnv
 }
-$('shareBtn').onclick=async()=>{const cnv=shareCanvas(),blob=await new Promise(r=>cnv.toBlob(r,'image/png',1)),file=new File([blob],'car-upgrade-summary.png',{type:'image/png'});try{if(navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({files:[file],title:'Car Upgrade Summary'});else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}}catch(e){if(e.name!=='AbortError')toast('Unable to share image')}};
+async function ensureShareLogo(){
+ const logo=$('shareLogo');
+ if(!logo)return;
+ if(logo.complete&&logo.naturalWidth)return;
+ try{await logo.decode()}catch(e){}
+}
+function downloadBlob(blob,name){
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+$('shareBtn').onclick=async()=>{
+ try{
+  await ensureShareLogo();
+  const cnv=shareCanvas();
+  const blob=await new Promise(resolve=>cnv.toBlob(resolve,'image/png',1));
+  if(!blob)throw new Error('Image generation failed');
+  const file=new File([blob],'car-upgrade-summary.png',{type:'image/png'});
+  if(navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({files:[file],title:'Car Upgrade Summary'});
+  else downloadBlob(blob,file.name);
+ }catch(e){
+  if(e.name==='AbortError')return;
+  try{
+   const cnv=shareCanvas(),blob=await new Promise(resolve=>cnv.toBlob(resolve,'image/png',1));
+   if(blob){downloadBlob(blob,'car-upgrade-summary.png');toast('Image saved');return}
+  }catch(_){}
+  toast('Unable to share image');
+ }
+};
 window.addEventListener('resize',()=>calc());
 load();if('serviceWorker'in navigator)window.addEventListener('load',async()=>{try{await navigator.serviceWorker.register('./sw.js',{scope:'./'})}catch(e){console.error('Service worker registration failed',e)}});
 })();
